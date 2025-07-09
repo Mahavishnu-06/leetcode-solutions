@@ -1,0 +1,25 @@
+class Solution {
+    public int countOdds(int l, int h) {
+        int count=0;
+        if(l%2!=0 && h%2!=0){
+            for(int i=l;i<=h;i+=2){
+                count++;
+            }
+            return count;
+        }
+        else if(l%2==0 && h%2==0){
+            for(int j=l;j<=h;j+=2){
+                count++;
+            }
+            return count-1;
+        } 
+        else{
+            for(int i=l;i<=h;i++){
+                if(i%2!=0){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
