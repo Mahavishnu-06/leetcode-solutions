@@ -1,0 +1,24 @@
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+        Arrays.sort(nums);
+       int n=nums.length;
+       LinkedHashMap<Integer,Integer> freq=new LinkedHashMap<>();
+       for(int num:nums){
+        freq.put(num,freq.getOrDefault(num,0)+1);
+       }
+       int max=0;
+       int mostfreq=-1;
+       for(int a:freq.keySet()){
+        if(a%2!=0){
+            continue;
+        }else{
+        int value=freq.get(a);
+        if(value>max){
+            max=value;
+            mostfreq=a;
+        }
+       } 
+       }
+       return mostfreq; 
+    }
+}
