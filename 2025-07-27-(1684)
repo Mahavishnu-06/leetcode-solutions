@@ -1,0 +1,21 @@
+class Solution {
+    public int countConsistentStrings(String allowed, String[] words) {
+        int count=0;
+        HashSet<Character> ans=new HashSet<>();
+        char ch[]=allowed.toCharArray();
+        for(char c:ch){
+            ans.add(c);
+        }
+        for(int i=0;i<words.length;i++){
+            char v[]=words[i].toCharArray();
+            HashSet<Character> ans1=new HashSet<>();
+            for(char m:v){
+                ans1.add(m);
+            }
+            if(ans.containsAll(ans1)){
+                count++;
+            }
+        } 
+        return count;
+    }
+}
