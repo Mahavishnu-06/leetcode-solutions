@@ -1,0 +1,12 @@
+class Solution {
+    public int vowelStrings(String[] w, int left, int right) {
+        int count=0;
+        for(int i=left;i<=right;i++){
+           if((w[i].startsWith("a")||w[i].startsWith("e")||w[i].startsWith("i")||w[i].startsWith("o")||w[i].startsWith("u")) && (w[i].endsWith("a")||w[i].endsWith("e")||w[i].endsWith("i")||w[i].endsWith("o")||w[i].endsWith("u"))){
+            System.out.print(w[i]);
+            count++;
+           }
+        }
+        return count;
+    }
+}
