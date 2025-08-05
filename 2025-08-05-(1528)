@@ -1,0 +1,15 @@
+class Solution {
+    public String restoreString(String s, int[] ind) {
+        StringBuilder sb=new StringBuilder();
+        char ch[]=s.toCharArray();
+       HashMap<Integer,Character> ans= new HashMap<>();
+       for(int i=0;i<ind.length;i++){
+        ans.put(ind[i],ch[i]);
+       }
+
+       for(int i=0;i<ind.length;i++){
+        sb.append(ans.get(i));
+       }
+       return sb.toString(); 
+    }
+}
