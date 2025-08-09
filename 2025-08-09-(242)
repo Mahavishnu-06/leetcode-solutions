@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()){
+            return false;
+        }
+        char c[]=s.toCharArray();
+        char ch[]=t.toCharArray();
+        HashMap<Character,Integer> freq=new HashMap<>();
+        for(char i:c){
+            freq.put(i,freq.getOrDefault(i,0)+1);
+        }
+        HashMap<Character,Integer> freq1=new HashMap<>();
+        for(char i:ch){
+            freq1.put(i,freq1.getOrDefault(i,0)+1);
+        }
+        for(char i:freq.keySet()){
+            if(!freq1.containsKey(i)||  !freq.get(i).equals(freq1.get(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+}
