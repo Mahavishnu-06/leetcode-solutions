@@ -1,0 +1,23 @@
+package skillarck;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class nonrepchar {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        char ch[]=str.toCharArray();
+        HashMap<Character,Integer> freq=new HashMap<>();
+        for(char c:ch){
+            freq.put(c,freq.getOrDefault(c,0)+1);
+        }
+        int count=0;
+        for(char c:ch){
+            if(freq.get(c)==1){
+                count++;
+            }
+        }
+        System.out.print(count);
+    }
+}
