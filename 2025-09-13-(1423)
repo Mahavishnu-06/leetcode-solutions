@@ -1,0 +1,20 @@
+class Solution {
+    public int maxScore(int[] arr, int k) {
+       int l=0;
+       int win=k-1;
+       int r=arr.length-1;
+       int lsum=0,rsum=0;
+       for(int i=l;i<=win;i++){
+        lsum+=arr[i];
+       }
+       int max=lsum+rsum;
+       while(win!=-1){
+         lsum=lsum-arr[win];
+         win--;
+         rsum=rsum+arr[r];
+         r--;
+         max=Math.max(max,lsum+rsum);
+       }
+       return max;
+    }
+}
