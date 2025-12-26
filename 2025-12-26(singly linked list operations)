@@ -1,0 +1,144 @@
+class LinkedList{
+    class Node{
+    int value;
+    Node next;
+    Node(int val){
+        this.value=val;
+        this.next=null;
+    }
+}
+    Node head,tail,temp,sectemp;
+    int size=0;
+    void insertFirst(int val){
+        Node newnode=new Node(val);
+        if(head==null){
+            head=newnode;
+            tail=newnode;
+        }else{
+            newnode.next=head;
+            head=newnode;
+        }
+        size++;
+    }
+    void insertLast(int val){
+        Node newnode=new Node(val);
+        if(head==null){
+            head=newnode;
+            tail=newnode;
+        }else{
+            tail.next=newnode;
+            tail=newnode;
+        }
+        size++;
+    }
+    void insertatanyPos(int pos,int val){
+        if(pos<0 || pos>size){
+           System.out.println("Invalid position");
+           return;
+        }
+        else if(pos==0){
+            insertFirst(val);
+            return;
+        }else if(pos==size){
+            insertLast(val);
+            return;
+        }
+        else{
+        Node newnode=new Node(val);
+        temp=head;
+        for(int i=1;i<pos;i++){
+          temp=temp.next;
+        }
+        sectemp=temp.next;
+        temp.next=newnode;
+        newnode.next=sectemp;
+        size++; 
+    }
+    }
+    void search(int ele){
+        temp=head;
+        for(int i=0;i<size;i++){
+            if(temp.value==ele){
+                 System.out.println("Element exists at position "+i);
+                 return;
+            }
+            temp=temp.next;
+        }
+        System.out.println("Element does not exist");
+
+    }
+    void deleteFirst(){
+        if(size==0){
+            System.out.println("List is Empty");
+            return;
+        }
+        else if(size==1){
+            head=null;
+            tail=null;
+        }
+        else{
+            head=head.next;
+        }
+        size--;
+    }
+    void deleteLast(){
+        if(size==0){
+            System.out.println("List is Empty");
+            return;
+        }
+        else if(size==1){
+            head=null;
+            tail=null;
+        }
+        else{
+            temp=head;
+            for(int i=1;i<size-1;i++){
+                temp=temp.next;
+            }
+            temp.next=null;
+            tail=temp;
+        }
+        size--;
+    }
+    void deleteatanyPos(int pos){
+        if(pos<0 || pos>=size){
+            System.out.println("Invalid posistion");
+            return;
+        }else if(pos==0){
+            deleteFirst();
+            return;
+        }else if(pos==size-1){
+            deleteLast();
+            return;
+        }else{
+            temp=head;
+            for(int i=1;i<pos;i++){
+                temp=temp.next;
+            }
+            temp.next=temp.next.next;
+        }
+        size--;
+    }
+    void display(){
+        temp=head;
+        while(temp!=null){
+            System.out.print(temp.value+" -> ");
+            temp=temp.next;
+        }
+    }
+}
+public class singlylink {
+    public static void main(String[] args) {
+        LinkedList list=new LinkedList();
+        list.insertLast(1);
+        list.insertLast(2);
+        list.insertLast(3);
+        list.insertLast(4);
+        list.insertLast(5);
+        list.display();
+        System.out.println();
+        list.deleteatanyPos(2);
+        list.display();
+    }
+}
+
