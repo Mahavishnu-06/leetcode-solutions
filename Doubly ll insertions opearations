@@ -1,0 +1,91 @@
+class doubly{
+    class Node{
+        int value;
+        Node next,prev;
+        Node(int val){
+          this.value=val;
+          this.next=null;
+          this.prev=null;
+        }
+    }
+    Node head,tail,temp;
+    int size=0;
+    void insertFirst(int val){
+        Node newnode=new Node(val);
+        if(head==null){
+            head=newnode;
+            tail=newnode;
+        }else{
+            newnode.next=head;
+            head.prev=newnode;
+            head=newnode;
+            // head.prev=null;
+        }
+        size++;
+    }
+    void insertLast(int val){
+        Node newnode=new Node(val);
+        if(head==null){
+            head=newnode;
+            tail=newnode;
+        }else{
+            tail.next=newnode;
+            newnode.prev=tail;
+            tail=newnode;
+        }
+        size++;
+    }
+    void insertatanypos(int pos,int val){
+        Node newnode=new Node(val);
+        if(pos<0 ||pos>size){
+            System.out.println("Invalid position");
+            return;
+        }
+        else if(pos==0){
+             insertFirst(val);
+            return;
+        }else if(pos==size){
+             insertLast(val);
+             return;
+        }else{
+            temp=head;
+            for(int i=1;i<pos;i++){
+                temp=temp.next;
+            }
+            Node nextnode=temp.next;
+            temp.next=newnode;
+            newnode.prev=temp;
+            newnode.next=nextnode;
+            nextnode.prev=newnode;
+            size++;
+        }
+       
+    }
+    void display(){
+        temp=head;
+        while(temp!=null){
+            System.out.print(temp.value+" -> ");
+            temp=temp.next;
+        }
+    }
+    void displayRev(){
+         temp=tail;
+        while(temp!=null){
+            System.out.print(temp.value+" -> ");
+            temp=temp.prev;
+        }
+    }
+}
+public class doublyll {
+    public static void main(String[] args) {
+        doubly ll=new doubly();
+        ll.insertLast(1);
+        ll.insertLast(2);
+        ll.insertLast(4);
+        ll.insertLast(5);
+        ll.display();
+        System.out.println();
+        ll.insertatanypos(2, 3);
+        ll.display();
+    }
+}
