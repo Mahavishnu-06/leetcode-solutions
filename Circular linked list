@@ -1,0 +1,51 @@
+class circular{
+    class Node{
+        int value;
+        Node next;
+        Node(int val){
+            this.value=val;
+            this.next=null;
+        }
+    }
+    Node head,tail;
+    void insertion(int val){
+      Node newnode=new Node(val);
+      if(head==null){
+        head=newnode;
+        tail=newnode;
+        head.next=head;
+      }
+      else{
+        tail.next=newnode;
+        newnode.next=head;
+        tail=newnode;
+      }
+    }
+    void display(){
+        Node temp=head;
+        while(temp!=tail){
+          System.out.print(temp.value+" -> ");
+          temp=temp.next;
+        }
+        System.out.print(tail.value);
+    }
+    // void display(){
+    //    Node temp=head;
+    //     do{
+    //        System.out.print(temp.value+" -> ");
+    //        temp=temp.next;
+    //     }while(temp!=head);
+    // }
+}
+public class circularll {
+    public static void main(String[] args) {
+        circular ll=new circular();
+        ll.insertion(1);
+        // ll.insertion(2);
+        // ll.insertion(3);
+        // ll.insertion(4);
+        ll.display();
+        ll.deletion(1);
+        ll.display();
+    }
+}
