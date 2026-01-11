@@ -1,0 +1,99 @@
+class circular{
+    class Node{
+        int value;
+        Node next;
+        Node(int val){
+            this.value=val;
+            this.next=null;
+        }
+    }
+    Node head,tail;
+    void insertion(int val){
+      Node newnode=new Node(val);
+      if(head==null){
+        head=newnode;
+        tail=newnode;
+        head.next=head;
+      }
+      else{
+        tail.next=newnode;
+        newnode.next=head;
+        tail=newnode;
+      }
+    }
+    void deletion(int val){
+      if(head==null){
+        System.out.println("List Is Empty");
+        return;
+      }
+      else if(head==tail && head.value==val){
+        head=null;
+        tail=null;
+        return;
+      }
+      else if(head.value==val){
+           head=head.next;
+           tail.next=head;  
+      }
+      else{
+        Node temp=head;
+        do{
+          Node n=temp.next;
+          if(n.value==val){
+             if(n==tail){
+                  tail=temp;
+              }
+            temp.next=n.next;
+            return;
+          }
+          temp=temp.next;
+        }while(temp!=head);
+      }
+      System.out.println("Invalid Value");
+      // else{
+      //   Node temp=head.next;
+      //   while(temp!=tail){
+      //     if(temp.value==val){
+      //       temp.value=temp.next.value;
+      //       temp.next=temp.next.next;
+      //       return;
+      //     }else{
+      //        temp=temp.next; 
+      //     }
+      //   }
+      // }
+    }
+    void display(){
+       if(head == null){
+        System.out.println("List is empty");
+        return;
+       }
+        Node temp=head;
+        while(temp!=tail){
+          System.out.print(temp.value+" -> ");
+          temp=temp.next;
+        }
+        System.out.print(tail.value);
+    }
+    // void display(){
+    //    Node temp=head;
+    //     do{
+    //        System.out.print(temp.value+" -> ");
+    //        temp=temp.next;
+    //     }while(temp!=head);
+    // }
+}
+public class circularll {
+    public static void main(String[] args) {
+        circular ll=new circular();
+        ll.insertion(9);
+        ll.insertion(1);
+        ll.insertion(5);
+        ll.display();
+        System.out.println();
+        ll.deletion(8);
+        // ll.deletion(9);
+        // System.out.println();
+        // ll.display();
+    }
+}
