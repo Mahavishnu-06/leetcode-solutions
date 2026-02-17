@@ -1,0 +1,12 @@
+class Solution {
+    public int findDelayedArrivalTime(int a, int d) {
+        int t=a+d;
+        if(t==24){
+            return 0;
+        }
+        if(t<24){
+            return t;
+        }
+        return t%24;
+    }
+}
