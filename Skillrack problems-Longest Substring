@@ -1,0 +1,31 @@
+import java.util.*;
+public class Hello {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        char ch[] = str.toCharArray();
+        String fina = "";
+        int max = 2;
+        for (int i = 0; i < ch.length; i++) {
+            HashSet<Character> ans = new HashSet<>();
+            String sol = "";
+            for (int j = i; j < ch.length; j++) {
+                if (!ans.contains(ch[j])) {
+                    ans.add(ch[j]);
+                    sol += ch[j];
+                } else {
+                    break;
+                }
+            }
+            if (ans.size() > max) {
+                max = ans.size();
+                fina = sol;
+            }
+        }
+        if (fina.length() > 2) {
+            System.out.print(fina);
+        } else {
+            System.out.print(-1);
+        }
+    }
+}
