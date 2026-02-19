@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isSameAfterReversals(int num) {
+        if(num==0){
+            return true;
+        }
+        int first=rev(num);
+        int second=rev(first);
+        if(num==second){
+            return true;
+        }
+        return false;
+    }
+    public int rev(int val){
+        int reve=0;
+        while(val>0){
+           reve=reve*10+(val%10);
+           val/=10;
+        }
+        return reve;
+    }
+}
