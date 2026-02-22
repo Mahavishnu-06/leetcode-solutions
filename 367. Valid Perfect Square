@@ -1,0 +1,16 @@
+class Solution {
+    public boolean isPerfectSquare(int num) {
+        if(1==num){
+            return true;
+        }
+       for(int i=1;i<=num/2;i++){
+        int m=i*i;
+        if(m==num){
+            return true;
+        }else if((m>num)){
+            return false;
+        }
+       }
+       return false;
+    }
+}
