@@ -1,0 +1,30 @@
+class Solution {
+    public boolean judgeCircle(String moves) {
+        // Brute force approach it gives TLE beacause it takes extra memory
+        // char ch[]=moves.toCharArray();
+        // HashMap<Character,Integer> freq=new HashMap<>();
+        // for(char c:ch){
+        //     freq.put(c,freq.getOrDefault(c,0)+1);
+        // }
+        //  if(freq.getOrDefault('U',0) == freq.getOrDefault('D',0) &&freq.getOrDefault('R',0) == freq.getOrDefault('L',0)) {
+        //      return true;
+        //  }
+        //  return false; 
+        int a=0,b=0;
+        char ch[]=moves.toCharArray();
+        for(char c:ch){
+            if(c=='U'){
+                a++;
+            }else if(c=='D'){
+                a--;
+            }else if(c=='L'){
+                b++;
+            }
+            else{
+                b--;
+            }
+        }
+        // System.out.print(b);
+        return a==0 && b==0;
+    }
+}
