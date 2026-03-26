@@ -1,0 +1,23 @@
+import java.util.*;
+class Queues {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            q.offer(sc.nextInt());
+        }
+        solution(q);
+    }
+    static void solution(Queue<Integer> q) {
+        int half = q.size() / 2;
+         Queue<Integer> firsthalf = new LinkedList<>();
+        for (int i = 0; i < half; i++) {
+            firsthalf.offer(q.poll());
+        }
+        for (int i = 0; i < half; i++) {
+            System.out.print(firsthalf.poll() + " "); 
+            System.out.print(q.poll() + " ");  
+        }
+    }
+}
